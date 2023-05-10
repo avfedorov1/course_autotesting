@@ -5,16 +5,12 @@
 def move_zeros(lst):
     # Здесь нужно написать код
     b = []
-    if lst.count(0) == 0:
-        pass
-    else:
-        while 0 in lst:
-            for x in lst:
-                if x == 0:
-                    q = lst.index(x)
-                    c = lst.pop(q)
-                    b.append(c)
-
+    while 0 in lst:
+        for x in lst:
+            if x == 0:
+                q = lst.index(x)
+                c = lst.pop(q)
+                b.append(c)
     lst.extend(b)
     return lst
 
@@ -36,7 +32,6 @@ test_data = [
     [1, 9, 5, 4, 8, 2],
     []
 ]
-
 
 for i, d in enumerate(data):
     assert move_zeros(d) == test_data[i], f'С набором {d} есть ошибка, не проходит проверку'
