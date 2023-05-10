@@ -5,16 +5,15 @@
 def move_zeros(lst):
     # Здесь нужно написать код
     b = []
-    for i in lst:
-        if lst.count(0) == 0:
-            continue
-        else:
-            while 0 in lst:
-                for x in lst:
-                    if x == 0:
-                        q = lst.index(x)
-                        c = lst.pop(q)
-                        b.append(c)
+    if lst.count(0) == 0:
+        pass
+    else:
+        while 0 in lst:
+            for x in lst:
+                if x == 0:
+                    q = lst.index(x)
+                    c = lst.pop(q)
+                    b.append(c)
 
     lst.extend(b)
     return lst
