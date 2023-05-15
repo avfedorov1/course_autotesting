@@ -13,7 +13,6 @@ def letter_stat(our_str):
     :return: словарь "letters_dict"
     """
     # Здесь нужно написать код
-
     letters_dict = dict.fromkeys(our_str)  # Создаем словарь, где буквы = ключи со значением None
     for key in our_str:
         values = our_str.count(key)  # Присваиваем переменной значение - сколько вхождений символа имеет строка
