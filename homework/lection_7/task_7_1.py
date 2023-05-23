@@ -29,6 +29,7 @@ class Segment:
     def x_axis_intersection(self):
         """
         Метод, который возвращает True, если отрезок пересекает ось абсцисс, иначе False
+        Формула: Если y1 * y2 < 0, то отрезок пересекает ось Ox.
         :return: True / False
         """
         if self.x1 * self.x2 <= 0:
@@ -39,6 +40,7 @@ class Segment:
     def y_axis_intersection(self):
         """
         Метод, который возвращает True, если отрезок пересекает ось ординат, иначе False
+        Формула: Если x2 * x2 < 0, то отрезок пересекает ось Oy.
         :return: True / False
         """
         if self.y1 * self.y2 <= 0:
