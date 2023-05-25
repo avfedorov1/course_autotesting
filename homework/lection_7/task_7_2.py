@@ -6,7 +6,7 @@
 # Реализуйте методы класса:
 # 1. short_name, который возвращает строку Фамилия И.
 # 2. path_deps, возвращает путь "Головное подразделение --> ... --> Конечное подразделение"
-# 3. new_salary, Директор решил проиндексировать зарплаты, и новая зарпалата теперь вычисляет по формуле:
+# 3. new_salary, Директор решил проиндексировать зарплаты, и новая зарплата теперь вычисляет по формуле:
 # 1337*Возраст*суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений
 # (регистр имеет значение "А" и "а" - разные буквы)
 # Например (Ввод --> Вывод) :
@@ -22,6 +22,54 @@
 # 1337*32*9 = 385056
 
 # Здесь пишем код
+class PersonInfo:
+
+    def __init__(self, name: str, age: int, office: str, *args):
+        # Обязательные атрибуты класса
+        self.name = name
+        self.age = age
+        self.office = [office]
+        self.division = [*args]
+        self.path = [office]
+
+    def short_name(self):
+        """
+        Метод преобразования полного имени и фамилии в сокращенное: Фамилия И
+        :return: строка Фамилия И.
+        """
+        name = self.name.split()
+        name_finish = name[-1] + ' ' + name[0][0] + '.'
+        return name_finish
+
+    def path_deps(self):
+        """
+        Метод, который возвращает полный путь от головного до конечного подразделения.
+        :return: Полный путь от головного до конечного подразделения.
+        """
+        for x in self.division:
+            self.path.append("-->")
+            self.path.append(x)
+        path = ' '.join(self.path)
+        return path
+
+    def new_salary(self):
+        """
+        Метод подсчета новой зарплаты по формуле: 1337*Возраст*суммарное кол-во вхождений трех наиболее часто
+        встречающихся букв из списка подразделений.
+        :return: сумма - число
+        """
+        my_str = self.office + self.division
+        my_str = ''.join(my_str)
+        count_finish = {}
+        max_numbers = []
+        for letter in my_str:
+            count = dict.fromkeys([letter], my_str.count(letter))
+            count_finish.update(count)
+        for values in count_finish.values():
+            max_numbers.append(values)
+        max_numbers.sort()
+        num = max_numbers[-1] + max_numbers[-2] + max_numbers[-3]
+        return 1337 * self.age * num
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
