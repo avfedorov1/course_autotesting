@@ -12,7 +12,7 @@
 # Дополнительными атрибутами будут:
 #   1. passengers - кол-во пассажиров
 #   2. ПРИВАТНЫЙ (private) атрибут park - Парк приписки автобуса
-#   3. ЗАЩИЩЕННЫЙ (protected) атрибут fare - Стоимость проезда
+#   3. ЗАЩИЩЕННЫЙ (protected) атрибут fare - Стоимость проезда.
 # Добавить свойство park, которое будет возвращать значение park
 # а при присвоении проверять номер парка, что он в диапазоне от 1000 до 9999
 #
@@ -24,6 +24,57 @@
 # У класса должно быть СВОЙСТВО how_long, которое вычисляет время за прохождение маршрута по формуле max_speed/(4*path)
 
 # Здесь пишем код
+class PublicTransport:
+
+    def __init__(self, brand, engine_power, year, color, max_speed):
+        # Обязательные атрибуты класса
+        self.brand = brand
+        self._engine_power = engine_power
+        self.year = year
+        self.color = color
+        self.max_speed = max_speed
+
+    @property  # Свойство, которое выводит на печать информацию о марке, цвете, годе выпуска и мощности двигателя
+    def info(self):
+        print(
+            f'Марка транспорта: {self.brand}\n'
+            f'Цвет: {self.color}\n'
+            f'Год выпуска: {self.year}\n'
+            f'Мощность двигателя: {self._engine_power}'
+        )
+
+
+class Bus(PublicTransport):
+
+    def __init__(self, brand, engine_power, year, color, max_speed, passengers, park, fare):
+        # Обязательные атрибуты класса
+        super().__init__(brand, engine_power, year, color, max_speed)
+        self.passengers = passengers
+        self.__park = park
+        self._fare = fare
+
+    @property  # Реализация метод получения атрибута
+    def park(self):
+        return self.__park
+
+    @park.setter  # Реализация метода установки атрибута
+    def park(self, park):
+        assert 1000 <= park <= 9999
+        self.__park = park
+
+
+class Tram(PublicTransport):
+
+    def __init__(self, brand, engine_power, year, color, max_speed, route, path, fare):
+        # Обязательные атрибуты класса
+        super().__init__(brand, engine_power, year, color, max_speed)
+        self.__route = route
+        self.path = path
+        self._fare = fare
+
+    @property  # Свойство, которое вычисляет время за прохождение маршрута по формуле max_speed/(4*path)
+    def how_long(self):
+        return self.max_speed / (4 * self.path)
 
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
