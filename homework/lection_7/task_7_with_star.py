@@ -9,6 +9,44 @@
 # RomanNums('CMXCIX').is_palindrome() --> True
 
 # Здесь пишем код
+class RomanNums:
+
+    def __init__(self, roman):
+        # Обязательные атрибуты класса
+        self.roman = roman
+
+    # Метод, который переводит римскую запись числа в арабскую
+    def from_roman(self):
+        roman_num = {
+            'M': 1000,
+            'CM': 900,
+            'D': 500,
+            'CD': 400,
+            'C': 100,
+            'XC': 90,
+            'L': 50,
+            'XL': 40,
+            'X': 10,
+            'IX': 9,
+            'V': 5,
+            'IV': 4,
+            'I': 1
+        }
+        number = 0
+        for key in roman_num:
+            while key in self.roman:
+                if key == self.roman[0] or key == self.roman[:2]:
+                    number += roman_num.get(key)
+                    self.roman = self.roman[len(key):]
+                else:
+                    break
+        return number
+
+    # Метод определяет, является ли арабское число палиндромом (True - является, иначе False)
+    def is_palindrome(self):
+        str_number = str(self.from_roman())
+        return str_number == str_number[::-1]
+
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
@@ -36,7 +74,6 @@ data = [RomanNums('MMMCCLXIII').from_roman,
         RomanNums('XXX').is_palindrome,
         RomanNums('D').is_palindrome,
         ]
-
 
 test_data = [3263, 134, 86, 1405, 978, 3404, 910, 2388, 2008, 1179, 3795, 988, 999, 444,
              True, True, False, False, True, True, False, False]
