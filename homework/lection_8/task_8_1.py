@@ -16,6 +16,7 @@
 
 import unittest  # Не удалять
 
+
 # Здесь пишем код
 def treatment_sum(our_tuple):
     try:
@@ -27,6 +28,7 @@ def treatment_sum(our_tuple):
         return 'Нельзя сложить эти данные'
     except IndexError:
         return 'Недостаточно данных'
+
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
