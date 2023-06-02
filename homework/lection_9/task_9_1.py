@@ -1,10 +1,8 @@
 # Дан текстовый файл test_file/task1_data.txt
 # Он содержит текст, в словах которого есть цифры.
 # Необходимо удалить все цифры и записать получившийся текст в файл test_file/task1_answer.txt
-from pathlib import Path
 
 # Здесь пишем код
-work_dir = Path.cwd()
 
 f = open('test_file/task1_data.txt', encoding='utf-8')
 list_row = f.readlines()  # Формируем списки строк, по которым будем итерироваться
