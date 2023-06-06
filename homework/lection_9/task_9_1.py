@@ -4,8 +4,8 @@
 
 # Здесь пишем код
 
-f = open('test_file/task1_data.txt', encoding='utf-8')
-list_row = f.readlines()  # Формируем списки строк, по которым будем итерироваться
+with open('test_file/task1_data.txt', encoding='utf-8') as f:
+    list_row = f.readlines()  # Формируем списки строк, по которым будем итерироваться
 # Создаем новый текстовый файл
 with open('test_file/task1_answer.txt', mode='w', encoding='utf-8') as file_finish:
     # Итерируемся по каждой строчке файла
