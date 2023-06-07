@@ -17,7 +17,7 @@ for line in list_row:  # Итерируемся по каждой строчке
             continue
         else:
             lst += letter  # Полученный результат добавляем в файл
-# Создаем новый текстовый файл
+# Создаем/открываем текстовый файл и записываем в него сформированную строку
 with open('test_file/task1_answer.txt', mode='w', encoding='utf-8') as file_finish:
     file_finish.write(lst)
 
