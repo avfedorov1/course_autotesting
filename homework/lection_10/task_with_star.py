@@ -8,4 +8,4 @@ import pytest
 @pytest.mark.id_check(1, 2, 3)
 def test():
     # Здесь пишем код
-    pass
+    print(str(test.pytestmark[0].args)[1: -1])
